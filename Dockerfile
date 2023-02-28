@@ -5,8 +5,8 @@ ENV PHPUSER=laravel
 
 RUN adduser -g ${PHPGROUP} -s /bin/sh -D ${PHPUSER}
 
-RUN se -i "s/user = www-data/user = ${PHPUSER}/g"  /usr/local/etc/php-fpm.d/www.conf
-RUN se -i "s/user = www-data/group = ${PHPGROUP}/g"  /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i "s/user = www-data/user = ${PHPUSER}/g"  /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i "s/user = www-data/group = ${PHPGROUP}/g"  /usr/local/etc/php-fpm.d/www.conf
 
 RUN mkdir -p /var/www/html/public
 
